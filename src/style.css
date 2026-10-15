@@ -1,0 +1,24 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #172334; color: #f4f0e8; font-family: Arial, sans-serif; }
+button { font: inherit; cursor: pointer; }
+.app { max-width: 720px; min-height: 100vh; margin: auto; background: #233348; box-shadow: 0 0 50px #09131f; }
+header { padding: 22px 28px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+h1 { margin: 0; font-size: 24px; }
+header span, footer { color: #aebdcc; font-size: 13px; }
+.art { height: 240px; display: grid; place-items: center; background: linear-gradient(#253951, #567688); border-block: 1px solid #7892a0; }
+.art.ending { background: linear-gradient(#875e6b, #e6a778); }
+.art span { font-size: 100px; }
+.content { padding: 25px 28px 32px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px; }
+.stats span { padding: 8px 10px; background: #34485e; border-radius: 4px; font-size: 13px; }
+h2 { font-size: 28px; margin: 28px 0 12px; }
+.story-text { line-height: 1.7; font-size: 17px; margin-bottom: 25px; }
+.choices { display: grid; gap: 10px; }
+.choices button, .restart { text-align: left; padding: 14px 16px; border: 1px solid #d4b485; border-radius: 5px; background: #dbb889; color: #182536; font-weight: bold; }
+.choices button:hover:not(:disabled), .restart:hover { background: #edc99b; }
+.choices button:disabled { opacity: .55; cursor: not-allowed; }
+.choices small { display: block; margin-top: 5px; font-weight: normal; }
+.notice { margin: 0 0 15px; padding: 12px; background: #415d71; border-radius: 4px; }
+.notice button, footer button { border: 0; background: none; color: #f3ce99; text-decoration: underline; }
+footer { border-top: 1px solid #506176; margin-top: 30px; padding-top: 16px; display: flex; justify-content: space-between; gap: 10px; }
+@media (max-width: 600px) { header { display: block; } header span { display: block; margin-top: 4px; } .art { height: 190px; } .art span { font-size: 80px; } .content { padding: 20px; } }
