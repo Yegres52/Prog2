@@ -21,6 +21,14 @@ npm run dev
 
 Чтобы изменить сюжет, отредактируйте `public/story.json` и увеличьте поле `version`.
 
+## Публикация на GitHub Pages
+
+1. В репозитории `Yegres52/Prog2` откройте **Settings → Pages** и выберите **GitHub Actions** в разделе **Build and deployment → Source**.
+2. Отправьте изменения в ветку `main`. Workflow `.github/workflows/pages.yml` установит зависимости, соберёт проект и опубликует `dist/`.
+3. После успешного выполнения workflow сайт будет доступен по адресу `https://yegres52.github.io/Prog2/`.
+
+Локально используйте `npm run dev` и `http://localhost:5175/`. Для Pages Vite добавляет префикс `/Prog2/` к ресурсам. Обновления `public/story.json` публикуются вместе со следующим коммитом; открытая игра проверяет новую версию при возврате на вкладку и каждую минуту.
+
 ## Структура
 
 - `src/App.vue` — главная страница.
