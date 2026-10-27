@@ -29,6 +29,37 @@ npm run dev
 
 Локально используйте `npm run dev` и `http://localhost:5175/`. Для Pages Vite добавляет префикс `/Prog2/` к ресурсам. Обновления `public/story.json` публикуются вместе со следующим коммитом; открытая игра проверяет новую версию при возврате на вкладку и каждую минуту.
 
+## Android-приложение
+
+Capacitor создаёт папку `android/` при необходимости. Она состоит из шаблонных файлов и не хранится в репозитории. Для локальной сборки:
+
+```bash
+npm install
+npm run build:mobile
+npx cap add android
+```
+
+После изменения Vue-кода или `story.json` выполните `npm run build:mobile && npx cap sync android`. Для локальной сборки APK откройте папку `android/` в Android Studio; потребуется Android SDK. Без Android Studio используйте GitHub Actions по инструкции ниже.
+
+Установленное приложение получает обновления сюжета из публичного `story.json` на GitHub Pages. Адрес задаётся в `.env.mobile`. Если сети нет, используется последняя сохранённая версия сюжета, а при первом запуске — встроенная копия. Обновления интерфейса требуют новой нативной сборки.
+
+### Как получить APK без Android Studio
+
+1. Отправьте необходимые файлы в ветку `main`:
+
+   ```bash
+   git add .gitignore README.md package.json package-lock.json vite.config.js src/storyStore.js .env.mobile capacitor.config.json .github/workflows/android-apk.yml
+   git commit -m "Добавить сборку APK"
+   git push origin main
+   ```
+
+   Папки `android/` и `.vscode/` не добавляются в Git.
+2. Откройте в репозитории вкладку **Actions → Build Android APK**. Сборка запускается после отправки изменений; её также можно запустить кнопкой **Run workflow**.
+3. Откройте успешный запуск и скачайте артефакт **last-light-debug-apk** в разделе **Artifacts**. GitHub выдаст ZIP-архив; распакуйте его, внутри будет `app-debug.apk`.
+4. Передайте `app-debug.apk` на Android-телефон и откройте файл. Если Android спросит разрешение на установку из этого источника, разрешите его для приложения, которым открываете APK.
+
+Это debug APK для личной проверки, уже подписанный тестовым ключом Android. Для публикации в Google Play нужна отдельная release-сборка со своим ключом подписи.
+
 ## Структура
 
 - `src/App.vue` — главная страница.
